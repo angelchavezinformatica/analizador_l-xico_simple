@@ -37,6 +37,7 @@ En este caso usamos 2 Analizadores Lexicos. El primero, analiza un número ya se
 ## Requisitos de Sistema
 
 - Python 3.9 o superiores.
+- Compatible con todos los sistemas operativos que puedan ejecutar python 3.
 
 ## Uso del Programa
 
