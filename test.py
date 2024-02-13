@@ -1,6 +1,6 @@
 from unittest import TestCase, main
 
-from core import ScannerOperations
+from core import ScannerOperations, ScannerOperationsInvalid
 
 valid_expresions = [
     "12 + 34.56 * 78 / 90",
@@ -30,14 +30,25 @@ invalid_expresions = [
 class TestScanner(TestCase):
 
     def test_valid_expresions(self):
+        scanner = ScannerOperations()
         for expresion in valid_expresions:
-            scanner = ScannerOperations()
-            assert scanner.scanner(string=expresion)
+            try:
+                for _ in scanner.scanner(expresion):
+                    pass
+            except ScannerOperationsInvalid:
+                assert False
+            assert True
 
     def test_invalid_expresions(self):
+        scanner = ScannerOperations()
         for expresion in invalid_expresions:
-            scanner = ScannerOperations()
-            assert not scanner.scanner(string=expresion)
+            try:
+                for _ in scanner.scanner(expresion):
+                    pass
+            except ScannerOperationsInvalid:
+                assert True
+                continue
+            assert False
 
 
 if __name__ == '__main__':
